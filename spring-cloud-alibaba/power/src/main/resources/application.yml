@@ -1,0 +1,23 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: service-power
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        group: DEFAULT_GROUP
+    sentinel:
+      transport:
+        dashboard: localhost:8180
+      log:
+        dir: ./logs/csp
+  devtools:
+    restart:
+      enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

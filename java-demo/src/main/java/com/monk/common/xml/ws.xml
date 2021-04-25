@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <soapenv:Header/>
+  <soap:Body xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <ns2:InputParameters xmlns:ns2="http://soa.monk.com/OSB_BP_SOA_HQ_ImportBdgtReserveRouteSrv" xmlns="http://soa.monk.com/MsgHeader">
+      <ns2:MSGHEADER>
+        <SOURCESYSTEMID>CMSR-SCM</SOURCESYSTEMID>
+        <SOURCESYSTEMNAME>供应链系统</SOURCESYSTEMNAME>
+        <TOKEN>******</TOKEN>
+        <USER_ID>28806</USER_ID>
+        <USER_NAME/>
+        <USER_PASSWD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></USER_PASSWD>
+        <SUBMIT_DATE>2021-04-07T11:52:26.996+08:00</SUBMIT_DATE>
+        <PAGE_SIZE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></PAGE_SIZE>
+        <CURRENT_PAGE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></CURRENT_PAGE>
+        <TOTAL_RECORD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></TOTAL_RECORD>
+        <PROVINCE_CODE>CMSR</PROVINCE_CODE>
+        <ROUTE_CODE>CMSR</ROUTE_CODE>
+        <TRACE_ID xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></TRACE_ID>
+        <RESERVED_1 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></RESERVED_1>
+        <RESERVED_2 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></RESERVED_2>
+      </ns2:MSGHEADER>
+      <ns2:INPUTCOLLECTION>
+        <ns2:INPUTCOLLECTION_ITEM>
+          <ns2:PRI_KEY>ab28e177975411eb8575fa163e348cff</ns2:PRI_KEY>
+          <ns2:DOCUMENT_TYPE_CODE>SCM_SORD</ns2:DOCUMENT_TYPE_CODE>
+          <ns2:DOCUMENT_NUM>1432</ns2:DOCUMENT_NUM>
+          <ns2:DOCUMENT_CODE>ZPO2104001</ns2:DOCUMENT_CODE>
+          <ns2:DOCUMENT_DESCRIPTION>终端类-成本-库存</ns2:DOCUMENT_DESCRIPTION>
+          <ns2:DOCUMENT_CREATE_BY>李梦丽</ns2:DOCUMENT_CREATE_BY>
+          <ns2:TRANSFER_TIME>2021-04-07T11:52:26.000+08:00</ns2:TRANSFER_TIME>
+          <ns2:BUDGET_USE_STATUS>R</ns2:BUDGET_USE_STATUS>
+          <ns2:SOURCE_SYSTEM>CMSR_SCM</ns2:SOURCE_SYSTEM>
+          <ns2:REFERENCE1 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE1>
+          <ns2:REFERENCE2 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE2>
+          <ns2:REFERENCE3 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE3>
+          <ns2:REFERENCE4 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE4>
+          <ns2:REFERENCE5 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE5>
+          <ns2:REFERENCE6 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE6>
+          <ns2:REFERENCE7 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE7>
+          <ns2:REFERENCE8 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE8>
+          <ns2:REFERENCE9 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE9>
+          <ns2:REFERENCE10 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE10>
+          <ns2:REFERENCE11 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE11>
+          <ns2:REFERENCE12 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE12>
+          <ns2:REFERENCE13 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE13>
+          <ns2:REFERENCE14 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE14>
+          <ns2:REFERENCE15 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE15>
+          <ns2:REFERENCE16 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE16>
+          <ns2:REFERENCE17 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE17>
+          <ns2:REFERENCE18 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE18>
+          <ns2:REFERENCE19 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE19>
+          <ns2:REFERENCE20 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE20>
+          <ns2:REFERENCE21 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE21>
+          <ns2:INPUT_EXT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:INPUT_EXT>
+          <ns2:TRANSACTION_LINES>
+            <ns2:TRANSACTION_LINES_ITEM>
+              <ns2:PRI_KEY>ab29c5f4975411eb8575fa163e348cff</ns2:PRI_KEY>
+              <ns2:DOCUMENT_LINE_NUM>1</ns2:DOCUMENT_LINE_NUM>
+              <ns2:BUDGET_TYPE>C</ns2:BUDGET_TYPE>
+              <ns2:PRE_DOCUMENT_TYPE_CODE/>
+              <ns2:PRE_DOCUMENT_NUM/>
+              <ns2:PRE_DOC_LINE_NUM/>
+              <ns2:PRE_RELEASE_AMOUNT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:PRE_RELEASE_AMOUNT>
+              <ns2:PROJECT_NUM>481010ZD0000200002</ns2:PROJECT_NUM>
+              <ns2:BUDGET_DEPT_CODE>00690003000000000000T1</ns2:BUDGET_DEPT_CODE>
+              <ns2:BUDGET_ACCOUNT>PLYX020599999908</ns2:BUDGET_ACCOUNT>
+              <ns2:RBS_ACTIVITY_CODE>AN450701</ns2:RBS_ACTIVITY_CODE>
+              <ns2:BRAND_CODE/>
+              <ns2:USERGROUP_CODE/>
+              <ns2:PRODUCT_CODE/>
+              <ns2:CHANNEL_CODE/>
+              <ns2:STRATEGY_CODE/>
+              <ns2:DIMENSION1 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:DIMENSION1>
+              <ns2:DIMENSION2 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:DIMENSION2>
+              <ns2:DIMENSION3 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:DIMENSION3>
+              <ns2:DIMENSION4 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:DIMENSION4>
+              <ns2:DIMENSION5 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:DIMENSION5>
+              <ns2:DIMENSION6 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:DIMENSION6>
+              <ns2:TRANSACTION_DATE>2020-01-01T09:00:00.000+08:00</ns2:TRANSACTION_DATE>
+              <ns2:DOCUMENT_LINE_AMOUNT>10000.00</ns2:DOCUMENT_LINE_AMOUNT>
+              <ns2:LINE_TAX_AMOUNT>600.00</ns2:LINE_TAX_AMOUNT>
+              <ns2:MAP_PRI_KEY>105757</ns2:MAP_PRI_KEY>
+              <ns2:PERIOD_NAME/>
+              <ns2:ACCOUNT_DEPT_CODE/>
+              <ns2:CURRENCY>CNY</ns2:CURRENCY>
+              <ns2:AMORTIZE_START_DATE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:AMORTIZE_START_DATE>
+              <ns2:AMORTIZE_END_DATE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:AMORTIZE_END_DATE>
+              <ns2:AMORTIZE_MONTH xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:AMORTIZE_MONTH>
+              <ns2:REFERENCE1 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE1>
+              <ns2:REFERENCE2 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE2>
+              <ns2:REFERENCE3 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE3>
+              <ns2:REFERENCE4 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE4>
+              <ns2:REFERENCE5 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE5>
+              <ns2:REFERENCE6 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE6>
+              <ns2:REFERENCE7 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE7>
+              <ns2:REFERENCE8 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE8>
+              <ns2:REFERENCE9 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE9>
+              <ns2:REFERENCE10 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE10>
+              <ns2:REFERENCE11 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE11>
+              <ns2:REFERENCE12 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE12>
+              <ns2:REFERENCE13 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE13>
+              <ns2:REFERENCE14 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE14>
+              <ns2:REFERENCE15 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE15>
+              <ns2:REFERENCE16 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE16>
+              <ns2:REFERENCE17 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE17>
+              <ns2:REFERENCE18 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE18>
+              <ns2:REFERENCE19 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE19>
+              <ns2:REFERENCE20 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE20>
+              <ns2:REFERENCE21 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE21>
+              <ns2:INPUT_EXT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:INPUT_EXT>
+            </ns2:TRANSACTION_LINES_ITEM>
+            <ns2:TRANSACTION_LINES_ITEM>
+              <ns2:PRI_KEY>ab29c5f4975411eb8575fa163e348cff</ns2:PRI_KEY>
+              <ns2:DOCUMENT_LINE_NUM>2</ns2:DOCUMENT_LINE_NUM>
+              <ns2:BUDGET_TYPE>C</ns2:BUDGET_TYPE>
+              <ns2:PRE_DOCUMENT_TYPE_CODE/>
+              <ns2:PRE_DOCUMENT_NUM/>
+              <ns2:PRE_DOC_LINE_NUM/>
+              <ns2:PRE_RELEASE_AMOUNT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:PRE_RELEASE_AMOUNT>
+              <ns2:PROJECT_NUM>481010ZD0000200002</ns2:PROJECT_NUM>
+              <ns2:BUDGET_DEPT_CODE>00690003000000000000T1</ns2:BUDGET_DEPT_CODE>
+              <ns2:BUDGET_ACCOUNT>PLYX020599999908</ns2:BUDGET_ACCOUNT>
+              <ns2:RBS_ACTIVITY_CODE>AN450701</ns2:RBS_ACTIVITY_CODE>
+              <ns2:BRAND_CODE/>
+              <ns2:USERGROUP_CODE/>
+              <ns2:PRODUCT_CODE/>
+              <ns2:CHANNEL_CODE/>
+              <ns2:STRATEGY_CODE/>
+              <ns2:DIMENSION1 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:DIMENSION1>
+              <ns2:DIMENSION2 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:DIMENSION2>
+              <ns2:DIMENSION3 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:DIMENSION3>
+              <ns2:DIMENSION4 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:DIMENSION4>
+              <ns2:DIMENSION5 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:DIMENSION5>
+              <ns2:DIMENSION6 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:DIMENSION6>
+              <ns2:TRANSACTION_DATE>2020-01-01T09:00:00.000+08:00</ns2:TRANSACTION_DATE>
+              <ns2:DOCUMENT_LINE_AMOUNT>200.00</ns2:DOCUMENT_LINE_AMOUNT>
+              <ns2:LINE_TAX_AMOUNT>12.00</ns2:LINE_TAX_AMOUNT>
+              <ns2:MAP_PRI_KEY>105757</ns2:MAP_PRI_KEY>
+              <ns2:PERIOD_NAME/>
+              <ns2:ACCOUNT_DEPT_CODE/>
+              <ns2:CURRENCY>CNY</ns2:CURRENCY>
+              <ns2:AMORTIZE_START_DATE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:AMORTIZE_START_DATE>
+              <ns2:AMORTIZE_END_DATE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:AMORTIZE_END_DATE>
+              <ns2:AMORTIZE_MONTH xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:AMORTIZE_MONTH>
+              <ns2:REFERENCE1 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE1>
+              <ns2:REFERENCE2 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE2>
+              <ns2:REFERENCE3 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE3>
+              <ns2:REFERENCE4 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE4>
+              <ns2:REFERENCE5 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE5>
+              <ns2:REFERENCE6 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE6>
+              <ns2:REFERENCE7 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE7>
+              <ns2:REFERENCE8 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE8>
+              <ns2:REFERENCE9 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE9>
+              <ns2:REFERENCE10 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE10>
+              <ns2:REFERENCE11 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE11>
+              <ns2:REFERENCE12 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE12>
+              <ns2:REFERENCE13 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE13>
+              <ns2:REFERENCE14 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE14>
+              <ns2:REFERENCE15 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE15>
+              <ns2:REFERENCE16 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE16>
+              <ns2:REFERENCE17 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE17>
+              <ns2:REFERENCE18 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE18>
+              <ns2:REFERENCE19 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE19>
+              <ns2:REFERENCE20 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE20>
+              <ns2:REFERENCE21 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:REFERENCE21>
+              <ns2:INPUT_EXT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"></ns2:INPUT_EXT>
+            </ns2:TRANSACTION_LINES_ITEM>
+          </ns2:TRANSACTION_LINES>
+        </ns2:INPUTCOLLECTION_ITEM>
+      </ns2:INPUTCOLLECTION>
+    </ns2:InputParameters>
+  </soap:Body>
+</soapenv:Envelope>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:DATA_OBJECT xmlns:ns2="http://soa.haid.com/CommonDAS">
+    <DATA_OBJECT_NAME>QUERY_USER_INFO</DATA_OBJECT_NAME>
+    <DATA_SOURCE_NAME>TEST_DATA_SOURCE</DATA_SOURCE_NAME>
+    <OPERATION_TYPE>SELECT</OPERATION_TYPE>
+    <MASTER>
+        <TABLE_NAME>TEST_USER</TABLE_NAME>
+        <ENTITY_NAME>user</ENTITY_NAME>
+        <TABLE_TYPE>TABLE</TABLE_TYPE>
+        <FIELDS>
+            <FIELD>
+                <FIELD_NAME>USER_ID</FIELD_NAME>
+                <COLUMN_NAME>USER_ID</COLUMN_NAME>
+                <COLUMN_NAME>VARCHAR2</COLUMN_NAME>
+                <DEFAULT_VALUE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <IS_PRECISE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <IS_FUZZY xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <IS_RESULT>true</IS_RESULT>
+                <IS_IMPORT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <IS_DELETE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            </FIELD>
+            <FIELD>
+                <FIELD_NAME>USER_NAME</FIELD_NAME>
+                <COLUMN_NAME>USER_NAME</COLUMN_NAME>
+                <COLUMN_NAME>VARCHAR2</COLUMN_NAME>
+                <DEFAULT_VALUE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <IS_PRECISE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <IS_FUZZY xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <IS_RESULT>true</IS_RESULT>
+                <IS_IMPORT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <IS_DELETE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            </FIELD>
+            <FIELD>
+                <FIELD_NAME>CLASS_ID</FIELD_NAME>
+                <COLUMN_NAME>CLASS_ID</COLUMN_NAME>
+                <COLUMN_NAME>VARCHAR2</COLUMN_NAME>
+                <DEFAULT_VALUE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <IS_PRECISE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <IS_FUZZY xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <IS_RESULT>true</IS_RESULT>
+                <IS_IMPORT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <IS_DELETE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            </FIELD>
+            <FIELD>
+                <FIELD_NAME>CLASS_NO</FIELD_NAME>
+                <COLUMN_NAME>CLASS_NO</COLUMN_NAME>
+                <COLUMN_NAME>VARCHAR2</COLUMN_NAME>
+                <DEFAULT_VALUE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <IS_PRECISE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <IS_FUZZY xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <IS_RESULT>true</IS_RESULT>
+                <IS_IMPORT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <IS_DELETE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            </FIELD>
+            <FIELD>
+                <FIELD_NAME>PROVINCE_ID</FIELD_NAME>
+                <COLUMN_NAME>PROVINCE_ID</COLUMN_NAME>
+                <COLUMN_NAME>VARCHAR2</COLUMN_NAME>
+                <DEFAULT_VALUE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <IS_PRECISE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <IS_FUZZY xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <IS_RESULT>true</IS_RESULT>
+                <IS_IMPORT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <IS_DELETE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+            </FIELD>
+        </FIELDS>
+        <SLAVE_TABLES>
+            <TABLE_INFO>
+                <TABLE_NAME>TEST_CLASS</TABLE_NAME>
+                <ENTITY_NAME>class</ENTITY_NAME>
+                <TABLE_TYPE>TABLE</TABLE_TYPE>
+                <FIELDS>
+                    <FIELD>
+                        <FIELD_NAME>CLASS_ID</FIELD_NAME>
+                        <COLUMN_NAME>CLASS_ID</COLUMN_NAME>
+                        <COLUMN_NAME>VARCHAR2</COLUMN_NAME>
+                        <DEFAULT_VALUE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                        <IS_PRECISE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                        <IS_FUZZY xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                        <IS_RESULT>true</IS_RESULT>
+                        <IS_IMPORT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                        <IS_DELETE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    </FIELD>
+                    <FIELD>
+                        <FIELD_NAME>CLASS_NO CLASS_NAME</FIELD_NAME>
+                        <COLUMN_NAME>CLASS_NO CLASS_NAME</COLUMN_NAME>
+                        <COLUMN_NAME>VARCHAR2</COLUMN_NAME>
+                        <DEFAULT_VALUE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                        <IS_PRECISE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                        <IS_FUZZY xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                        <IS_RESULT>true</IS_RESULT>
+                        <IS_IMPORT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                        <IS_DELETE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    </FIELD>
+                </FIELDS>
+                <SLAVE_TABLES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <KEYS>
+                    <KEY>
+                        <PARENT_FIELD>CLASS_ID</PARENT_FIELD>
+                        <CHILD_FIELD>CLASS_ID</CHILD_FIELD>
+                    </KEY>
+                    <KEY>
+                        <PARENT_FIELD>CLASS_NO</PARENT_FIELD>
+                        <CHILD_FIELD>CLASS_NO</CHILD_FIELD>
+                    </KEY>
+                </KEYS>
+            </TABLE_INFO>
+            <TABLE_INFO>
+                <TABLE_NAME>TEST_PROVINCE</TABLE_NAME>
+                <ENTITY_NAME>province</ENTITY_NAME>
+                <TABLE_TYPE>TABLE</TABLE_TYPE>
+                <FIELDS>
+                    <FIELD>
+                        <FIELD_NAME>PROVINCE_ID</FIELD_NAME>
+                        <COLUMN_NAME>PROVINCE_ID</COLUMN_NAME>
+                        <COLUMN_NAME>VARCHAR2</COLUMN_NAME>
+                        <DEFAULT_VALUE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                        <IS_PRECISE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                        <IS_FUZZY xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                        <IS_RESULT>true</IS_RESULT>
+                        <IS_IMPORT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                        <IS_DELETE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    </FIELD>
+                    <FIELD>
+                        <FIELD_NAME>PROVINCE_NAME</FIELD_NAME>
+                        <COLUMN_NAME>PROVINCE_NAME</COLUMN_NAME>
+                        <COLUMN_NAME>VARCHAR2</COLUMN_NAME>
+                        <DEFAULT_VALUE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                        <IS_PRECISE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                        <IS_FUZZY xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                        <IS_RESULT>true</IS_RESULT>
+                        <IS_IMPORT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                        <IS_DELETE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                    </FIELD>
+                </FIELDS>
+                <SLAVE_TABLES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <KEYS>
+                    <KEY>
+                        <PARENT_FIELD>PROVINCE_ID</PARENT_FIELD>
+                        <CHILD_FIELD>PROVINCE_ID</CHILD_FIELD>
+                    </KEY>
+                </KEYS>
+            </TABLE_INFO>
+        </SLAVE_TABLES>
+        <KEYS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+    </MASTER>
+    <DATA_SOURCE_TYPE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+    <IS_PAGE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+</ns2:DATA_OBJECT>

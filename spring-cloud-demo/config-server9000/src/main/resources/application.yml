@@ -1,0 +1,24 @@
+server:
+  port: 9000
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka3000.com:3000/eureka
+  instance:
+    instance-id: config-server9000 #此实例注册到eureka服务端的唯一的实例ID
+    prefer-ip-address: true #是否显示IP地址
+    leaseRenewalIntervalInSeconds: 10 #eureka客户需要多长时间发送心跳给eureka服务器，表明它仍然活着,默认为30 秒 (与下面配置的单位都是秒)
+    leaseExpirationDurationInSeconds: 30 #Eureka服务器在接收到实例的最后一次发出的心跳后，需要等待多久才可以将此实例删除，默认为90秒
+
+spring:
+  application:
+    name: config-server
+# spring-cloud-config配置说明参见官方文档：https://docs.spring.io/spring-cloud-config/docs/2.2.7.RELEASE/reference/html/#_spring_cloud_config_server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/MinMonk/StudyDemo.git
+          search-paths: spring-cloud-demo/config-file/**  #Configserver会在spring-cloud-demo/config-file目录及子目录中查找配置文件。
+#          clone-on-start: true  #启动时就clone仓库到本地，默认是在配置被首次请求时，config server才会clone git仓库

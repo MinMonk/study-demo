@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+      config:
+        file-extension: yaml
+        extension-configs:
+          - data-id: ext-config-common1.properties
+          - data-id: ext-config-globle.properties
+            group: GLOBLE_GROUP
+            refresh: true
+  application:
+    name: nacos-config
+user:
+  info: wangliang-boot-yml

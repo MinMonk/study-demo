@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:cxf="http://cxf.apache.org/core"
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd 
+	http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd 
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+	http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd ">
+
+
+	<jaxws:endpoint id="CommonDAS"
+		implementor="com.monk.commondas.CommonDASPortImpl"
+		address="/CommonDAS"
+		wsdlLocation="/META-INF/wsdl/CommonDAS/CommonDAS.wsdl" />
+<!--
+	<jaxws:endpoint
+		id="OSB_SOA_COM_HQ_InquiryServiceConfigSrv"
+		implementor="com.monk.osb_soa_com_hq_inquiryserviceconfigsrv.OSB_SOA_COM_HQ_InquiryServiceConfigSrvPortImpl"
+		address="/ESB_ESB_COM_InquiryServiceConfigSrv"
+		wsdlLocation="/META-INF/wsdl/OSB_SOA_COM_HQ_InquiryServiceConfigSrv/OSB_SOA_COM_HQ_InquiryServiceConfigSrv.wsdl" />
+
+	<jaxws:endpoint
+		id="OSB_SOA_COM_HQ_UpdateServiceConfigSrv"
+		implementor="com.monk.osb_soa_com_hq_updateserviceconfigsrv.OSB_SOA_COM_HQ_UpdateServiceConfigSrvPortImpl"
+		address="/OSB_SOA_COM_HQ_UpdateServiceConfigSrv"
+		wsdlLocation="/META-INF/wsdl/OSB_SOA_COM_HQ_UpdateServiceConfigSrv/OSB_SOA_COM_HQ_UpdateServiceConfigSrv.wsdl" />
+
+	<jaxws:endpoint
+		xmlns:tns="http://monk.com/OSB_BP_SOA_HQ_InquiryServiceTokenSrv"
+		id="osbbpsoahqinquiryservicetokensrv"
+		implementor="com.monk.inquiryServiceTokenSrv.service.impl.OSBBPSOAHQInquiryServiceTokenSrvImpl"
+		wsdlLocation="/META-INF/wsdl/OSB_BP_SOA_HQ_InquiryServiceTokenSrv/OSB_BP_SOA_HQ_InquiryServiceTokenSrv.wsdl"
+		endpointName="tns:OSB_BP_SOA_HQ_InquiryServiceTokenSrvPort"
+		serviceName="tns:OSB_BP_SOA_HQ_InquiryServiceTokenSrv"
+		address="/OSB_BP_SOA_HQ_InquiryServiceTokenSrvPort">
+		<jaxws:features>
+			<bean class="org.apache.cxf.feature.LoggingFeature" />
+		</jaxws:features>
+	</jaxws:endpoint>
+ -->
+</beans>

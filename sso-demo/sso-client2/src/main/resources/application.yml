@@ -1,0 +1,14 @@
+server:
+  port: 10002
+  context-path: /client2
+
+security:
+  oauth2:
+    client:
+      client-id: monk2
+      client-secret: monksecurity2
+      user-authorization-uri: http://127.0.0.1:9999/server/oauth/authorize
+      access-token-uri: http://127.0.0.1:9999/server/oauth/token
+    resource:
+      jwt:
+        key-uri: http://127.0.0.1:9999/server/oauth/token_key

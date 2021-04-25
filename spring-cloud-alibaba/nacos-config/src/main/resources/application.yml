@@ -1,0 +1,4 @@
+#user:
+#  info: wangliang-app-yml
+server:
+  port: 8200

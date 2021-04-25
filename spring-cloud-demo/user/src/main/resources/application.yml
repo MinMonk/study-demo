@@ -1,0 +1,64 @@
+server:
+  port: 5000
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka3000.com:3000/eureka,http://eureka3001.com:3001/eureka,http://eureka3002.com:3002/eureka  #eureka服务端提供的注册地址 参考服务端配置的这个路径
+  instance:
+    instance-id: user #此实例注册到eureka服务端的唯一的实例ID
+    prefer-ip-address: true #是否显示IP地址
+    leaseRenewalIntervalInSeconds: 10 #eureka客户需要多长时间发送心跳给eureka服务器，表明它仍然活着,默认为30 秒 (与下面配置的单位都是秒)
+    leaseExpirationDurationInSeconds: 30 #Eureka服务器在接收到实例的最后一次发出的心跳后，需要等待多久才可以将此实例删除，默认为90秒
+
+# hystrix配置官方文档地址: https://github.com/Netflix/Hystrix/wiki/Configuration
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false #是否开启超时(默认开启)
+        isolation:
+          thread:
+            interruptOnTimeout: true #发生超时时是否应中断执行(默认true)
+            timeoutInMilliseconds: 20000 #设置请求超时时间(默认1000)
+          semaphore:
+            maxConcurrentRequests: 5
+      metrics:
+        rollingStats:
+          # 设置断路器统计错误次数的一个时间区间.比方说规则为10s内服务异常20次就开启断路器,如果一个周期10s内
+          # 失败了19次,第20次失败在下一个统计区间10s内,依旧不会开启断路器,必须得在一个统计区间内错误20次才会
+          # 开启断路器
+          timeInMilliseconds: 10*1000
+      circuitBreaker:
+        enabled: true #开启断路器(默认true)
+        requestVolumeThreshold: 5   #限流,设置请求失败5次之后开启熔断器(默认:20)
+        sleepWindowInMilliseconds: 5000 #设置断路器休眠5s后进入半开状态,服务在半开状态下会去请求一次源服务,如果失败就直接开启断路器(默认值5000)
+  threadpool:
+    default:
+      coreSize: 10  # 设置限流,通过设置线程池的大小来达到限流的目的,这里配置的default为默认的配置,可以在需要限流的服务上通过threadPoolKey注
+                    # 解来定义一个新的key,然后既可以在application.yml中定义配置,也可以在直接通过注解来覆盖默认的配置
+      maxQueueSize: -1
+
+spring:
+  application:
+    name: server-user #此实例注册到eureka服务端的name
+  devtools:
+    restart:
+      enabled: true
+  zipkin:
+    base-url: http://192.168.94.200:9411  #指定Zipkin server地址
+  sleuth:
+    sampler:
+      probability: 1.0  #request采样的数量 默认是0.1 也即是10%  顾名思义 采取10%的请求数据  因为在分布式系统中，数据量可能会非常大，因此采样非常重要。我们示例数据少最好配置为1全采样
+
+# 开启feign+hystrix,高版本后这个默认值为false,需要手动打开,否则通过feign去调用服务hystrix不会生效
+feign:
+  hystrix:
+    enabled: true
+
+#
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

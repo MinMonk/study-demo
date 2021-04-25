@@ -1,0 +1,31 @@
+server:
+  port: 8001
+eureka:
+  client:
+    serviceUrl:
+#      defaultZone: http://eureka3000.com:3000/eureka,http://eureka3001.com:3001/eureka,http://eureka3002.com:3002/eureka  #eureka服务端提供的注册地址 参考服务端配置的这个路径
+      defaultZone: http://eureka3000.com:3000/eureka
+  instance:
+    instance-id: zuul-server-1 #此实例注册到eureka服务端的唯一的实例ID
+    prefer-ip-address: true #是否显示IP地址
+    leaseRenewalIntervalInSeconds: 10 #eureka客户需要多长时间发送心跳给eureka服务器，表明它仍然活着,默认为30 秒 (与下面配置的单位都是秒)
+    leaseExpirationDurationInSeconds: 30 #Eureka服务器在接收到实例的最后一次发出的心跳后，需要等待多久才可以将此实例删除，默认为90秒
+
+spring:
+  application:
+    name: zuul-server #此实例注册到eureka服务端的name
+  devtools:
+    restart:
+      enabled: true
+
+# 官网配置地址: https://docs.spring.io/spring-cloud-netflix/docs/2.2.6.RELEASE/reference/html/#router-and-filter-zuul
+zuul:
+#  ignored-services: zuul-client # 禁止通过微服务名称去访问服务, "*"表示禁止所有
+#  在转发前是否从路径中去除前缀(默认:true),当为true的时候,如果源服务的实际地址和这
+#  里zuul中配置的前缀一致,那么在转发的时候会被截取掉,所以需要手动的将当前这个属性设置为false
+#  strip-prefix: false
+  prefix: /api  #必须要以/开头,否则服务将无法访问
+  routes:
+    power:
+      serviceId: server-power
+      path: /power/**

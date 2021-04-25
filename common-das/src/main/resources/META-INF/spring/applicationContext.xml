@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
+			http://www.springframework.org/schema/context 
+			http://www.springframework.org/schema/context/spring-context-4.0.xsd 
+			http://www.springframework.org/schema/tx 
+			http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+	<context:property-placeholder location="classpath*:META-INF/spring/*.properties" />
+
+	<!-- 用于持有ApplicatioSpringContextHoldernContext,可以使用SpringContextHolder.getBean('xxxx')的静态方法得到spring
+		bean对象 -->
+	<bean class="com.monk.commondas.common.SpringContextHolder"
+		lazy-init="false" />
+
+	<!-- <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName">
+			公司128环境数据源JNDI
+			<value>jdbc/hd_das</value>
+		</property>
+	</bean> -->
+	 
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${database.driverClassName}" />
+		<property name="url" value="${database.url}" />
+		<property name="username" value="${database.username}" />
+		<property name="password" value="${database.password}" />
+		<property name="validationQuery" value="${database.validationQuery}" />
+		<property name="maxWait" value="${database.maxWait}"/>
+		<property name="initialSize" value="${database.initialSize}"/>
+		<property name="maxActive" value="${database.maxActive}"/>
+		<property name="maxIdle" value="${database.maxIdle}"/>
+		<property name="minIdle" value="${database.minIdle}"/>
+		<property name="testOnBorrow" value="${database.testOnBorrow}"/>
+		<property name="testOnReturn" value="${database.testOnReturn}"/>
+		<property name="connectionProperties" value="${database.connectionProperties}"/>
+	</bean>
+
+	<bean
+		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+
+	<!-- Hibernate SessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan">
+			<list>
+				<!-- <value>com.monk.commondas.entity</value> -->
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="connection.useUnicode">true</prop>
+				<prop key="connection.characterEncoding">UTF-8</prop>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+				<prop key="hibernate.cache.use_second_level_cache">${hibernate.cache.use_second_level_cache}</prop>
+				<prop key="hibernate.cache.use_query_cache">${hibernate.cache.use_query_cache}</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- Transaction manager for a single Hibernate SessionFactory (alternative 
+		to JTA) -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<!-- Activates scanning of @Autowired -->
+	<context:annotation-config />
+	<context:component-scan base-package="com.monk.commondas">
+	</context:component-scan>
+</beans>

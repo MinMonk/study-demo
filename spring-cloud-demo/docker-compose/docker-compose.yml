@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  elasticsearch:
+    container_name: elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.2  # 在zipkin的[官网](https://github.com/openzipkin/zipkin/tree/master/zipkin-server#elasticsearch-storage)上有明确指出elasticsearch的版本需要在5-7.x，这里测试过5.x的会有问题，尽量使用高版本的elasticsearch吧
+    restart: always
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+      discovery.type: single-node
+    networks:
+      mynet:
+        ipv4_address: 192.18.0.92
+  zipkin:
+    container_name: zipkin
+    image: openzipkin/zipkin
+    restart: always
+    ports:
+      - 9411:9411
+    environment:
+      STORAGE_TYPE: elasticsearch
+      ES_HOSTS: 192.18.0.92:9200
+      ES_TEMPLATE_PRIORITY: 0
+    networks:
+      mynet:
+        ipv4_address: 192.18.0.94
+    depends_on:
+      - elasticsearch
+    links:
+      - elasticsearch
+networks:
+    mynet:
+        external:
+            name: mynetwork

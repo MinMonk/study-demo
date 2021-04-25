@@ -1,0 +1,40 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!-- 2020-05-15 17:41:56 -->
+<!-- Generated file version: V0.1 -->
+<!-- Copyright (c) 2004-2020  -->
+<schema attributeFormDefault="unqualified"
+	elementFormDefault="qualified"
+	targetNamespace="http://monk.com/CommonDAS"
+	xmlns:tns="http://monk.com/CommonDAS"
+	xmlns="http://www.w3.org/2001/XMLSchema">
+
+	<element name="InputParameters" type="tns:InputParameters"/>
+	<element name="OutputParameters" type="tns:OutputParameters"/>
+    
+	<complexType name="InputParameters">
+     <sequence>
+        <element name="SERVICE_NAME_EN" type="string" nillable="true" />
+        <element name="MAJOR_VERSION" type="string" nillable="true" />
+        <element name="DATA_CONFIG" type="string" nillable="true" />
+        <element name="CONFIG_VERSION" type="string" nillable="true" />
+        <element name="INPUT_JSON" type="string" nillable="true" />
+		<element name="PAGE_SIZE" type="decimal" nillable="true" />
+        <element name="CURRENT_PAGE" type="decimal" nillable="true" />
+        <element name="TOTAL_RECORD" type="decimal" nillable="true" />
+     </sequence>
+    </complexType>
+        
+	<complexType name="OutputParameters">
+     <sequence>
+        <element name="ESB_FLAG" type="string" nillable="true" />
+        <element name="ESB_RETURN_CODE" type="string" nillable="true" />
+        <element name="ESB_RETURN_MESSAGE" type="string" nillable="true" />
+        <element name="BIZ_SERVICE_FLAG" type="string" nillable="true" />
+        <element name="BIZ_RETURN_CODE" type="string" nillable="true" />
+        <element name="BIZ_RETURN_MESSAGE" type="string" nillable="true" />
+        <element name="INSTANCE_ID" type="string" nillable="true" />
+        <element name="TOTAL_RECORD" type="decimal" nillable="true" />
+        <element name="OUTPUT_JSON" type="string" nillable="true" />
+       </sequence>
+    </complexType>
+</schema>

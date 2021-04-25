@@ -1,0 +1,45 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!-- 2020-08-16 14:41:56 -->
+<!-- Generated file version: V0.1 -->
+<!-- Copyright (c) 2004-2020  -->
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://monk.com/CommonDAS"
+	name="CommonDAS"
+	targetNamespace="http://monk.com/CommonDAS">
+		
+	<wsdl:types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://monk.com/CommonDAS" schemaLocation="CommonDAS.xsd"/>
+		</schema>
+	</wsdl:types>
+	<wsdl:message name="CommonDASRequestMessage">
+		<wsdl:part name="payload" element="tns:InputParameters"/>
+	</wsdl:message>
+	<wsdl:message name="CommonDASResponseMessage">
+		<wsdl:part name="payload" element="tns:OutputParameters"/>
+	</wsdl:message>
+	<wsdl:portType name="CommonDAS">
+		<wsdl:operation name="process">
+			<wsdl:input message="tns:CommonDASRequestMessage"/>
+			<wsdl:output message="tns:CommonDASResponseMessage"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="CommonDASBinding" type="tns:CommonDAS">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="process">
+			<soap:operation style="document" soapAction="process"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	 </wsdl:binding>
+	<wsdl:service name="CommonDAS">
+		<wsdl:port name="CommonDASPort" binding="tns:CommonDASBinding">
+			<soap:address location="http://localhost:8080/CommonDAS"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

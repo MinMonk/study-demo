@@ -1,0 +1,52 @@
+server:
+  port: 8080
+  session:
+    timeout: 6000
+#  servlet:
+#    context-path: /demo
+
+monk:
+  security:
+    validateCode:
+      imageCode:
+        length: 6
+        width: 100
+        urls: /order,/user/*
+      smsCode:
+        urls: /order,/user/*
+        expireIn: 60000
+    browser:
+#      loginPage: /cus-login.html
+      registerPage: /cus-register.html
+    social:
+      processesUrl: /qqLogin
+      qq:
+        app-id:
+        app-secret:
+        providerId: callback.do
+      wechat:
+        app-id:
+        app-secret:
+    oauth2:
+      jwtSignKey: monk
+      storeType: jwt
+      clients:
+        - cliendtId: monkDemo
+          clientSecret: monkSecret
+          accessTokenValiditySeconds: 1800
+        - cliendtId: test
+          clientSecret: test
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.94.200:3306/monk_security_demo?useUnicode=yes&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 123456
+  session:
+    store-type: redis
+  redis:
+    host: 192.168.94.200
+    port: 6379
+    password: redis123
+

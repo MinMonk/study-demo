@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:STUDENT xmlns:ns2="http://www.monk.com/monk">
+    <id>1</id>
+    <name>jack</name>
+</ns2:STUDENT>

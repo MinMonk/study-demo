@@ -1,0 +1,57 @@
+sentinel:
+  persist:
+    zookeeper:
+      remoteAddress: localhost:2181
+      groupId: ${spring.cloud.nacos.discovery.group}
+      dataId: ${spring.application.name}
+server:
+  port: 8100
+spring:
+  application:
+    name: service-user
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        group: DEFAULT_GROUP
+    sentinel:
+      transport:
+        dashboard: localhost:8180
+      log:
+        dir: ./logs/csp
+  devtools:
+    restart:
+      enabled: true
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            interruptOnTimeout: true
+            timeoutInMilliseconds: 5000
+          semaphore:
+            maxConcurrentRequests: 5
+      metrics:
+        rollingStats:
+          timeInMilliseconds: 10*1000
+      circuitBreaker:
+        enabled: true
+        requestVolumeThreshold: 5
+        sleepWindowInMilliseconds: 10000
+#  threadpool:
+#    default:
+#      coreSize: 10
+#      maxQueueSize: -1
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+feign:
+  hystrix:
+    enabled: true
+  sentinel:
+    enabled: true

@@ -1,0 +1,4 @@
+from: spring-cloud-demo
+spring:
+  application:
+    name: test-cloud-test1
