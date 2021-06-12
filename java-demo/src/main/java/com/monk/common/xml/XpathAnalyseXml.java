@@ -142,6 +142,70 @@ public class XpathAnalyseXml {
         } catch (XPathExpressionException e) {
             logger.error(e.getMessage(), e);
         }
+        
+        if (ANALYSE_DIRECTION_TOP.equals(flag)) {
+            Map<String, List<Map<String, Object>>> mergeData = mergeDupliData(result);
+            result = mergeResultData(mergeData);
+        }
+        
+        
+        
+        return result;
+    }
+    
+    /**
+     * 合并结果数据
+     * @param mergeData  合并重复数据之后的数据
+     * @return  合并结果数据
+     * @author Monk
+     * @date 2021年4月26日 下午4:42:22
+     */
+    private List<Map<String, Object>> mergeResultData(Map<String, List<Map<String, Object>>> mergeData){
+        List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+        for(Entry<String, List<Map<String, Object>>> mergeEntry : mergeData.entrySet()) {
+            List<Map<String, Object>> objList = mergeEntry.getValue();
+            List<Object> tempList = new ArrayList<Object>();
+            String nextLevelKey = "";
+            Map<String, Object> tempMap = new HashMap<String, Object>();
+            for(Map<String, Object> map : objList) {
+                for(Entry<String, Object> entry : map.entrySet()) {
+                    String key = entry.getKey();
+                    Object value = entry.getValue();
+                    if(value instanceof Map) {
+                        nextLevelKey = key;
+                        tempList.add(value);
+                    }else if(value instanceof List) {
+                        nextLevelKey = key;
+                        tempList.addAll((List)value);
+                    }
+                    tempMap.put(key, value);
+                }
+            }
+            tempMap.put(nextLevelKey, tempList);
+            result.add(tempMap);
+        } 
+        return result;
+    }
+    
+    
+    /**
+     * 合并重复数据
+     * @param data  解析XML后的数据
+     * @return 合并后的数据
+     * @author Monk
+     * @date 2021年4月26日 下午4:41:58
+     */
+    private Map<String, List<Map<String, Object>>> mergeDupliData(List<Map<String, Object>> data) {
+        Map<String, List<Map<String, Object>>> result = new HashMap<>();
+        for(Map<String, Object> map : data) {
+            String priKey = MapUtils.getString(map, "PRI_KEY");
+            List<Map<String, Object>> tempList = result.get(priKey);
+            if(null == tempList) {
+                tempList = new ArrayList<Map<String, Object>>();
+            }
+            tempList.add(map);
+            result.put(priKey, tempList);
+        }
         return result;
     }
 
@@ -479,6 +543,10 @@ public class XpathAnalyseXml {
         Document doc = null;
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+            factory.setFeature("http://xml.org/sax/features/external-general-entities", true);
+            factory.setFeature("http://xml.org/sax/features/external-parameter-entities", true);
+            factory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", true);
             DocumentBuilder builder = factory.newDocumentBuilder();
             content = null == content ? "" : content;
             InputStream stream = new ByteArrayInputStream(content.getBytes());
