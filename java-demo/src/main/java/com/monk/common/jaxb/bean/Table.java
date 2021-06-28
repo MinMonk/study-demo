@@ -17,15 +17,15 @@ public class Table {
     @XmlElement(name = "TABLE_TYPE", required = true, nillable = false)
     private String tableType;
 
-    @XmlElementWrapper(name = "FIELDS", required = true, nillable = false)
+    @XmlElementWrapper(name = "FIELDS", nillable = false)
     @XmlElement(name = "FIELD")
     private List<Field> fields;
 
-    @XmlElementWrapper(name = "SLAVE_TABLES", required = false, nillable = true)
+    @XmlElementWrapper(name = "SLAVE_TABLES", nillable = true)
     @XmlElement(name = "TABLE")
     private List<Table> slaveTables;
 
-    @XmlElementWrapper(name = "KEYS", required = false, nillable = true)
+    @XmlElementWrapper(name = "KEYS", nillable = true)
     @XmlElement(name = "KEY")
     private List<Key> keys;
 
