@@ -4,7 +4,7 @@
  * 版权： Copyright 2017-2022 CMCC All Rights Reserved.
  * 描述： ESB管理系统
  */
-package com.monk.email;
+package com.monk.utils.email;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -12,10 +12,8 @@ import java.util.Date;
 import java.util.Map;
 
 import org.apache.commons.lang.time.DateFormatUtils;
-import org.apache.commons.lang.time.DateUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.util.StringUtils;
 
 import com.monk.common.constant.Constants;
 import com.monk.common.email.EmailSenderFactory;
