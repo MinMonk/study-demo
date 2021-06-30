@@ -94,7 +94,7 @@ public class XmlUtils {
             }
             xmlStr.append(space + "</" + name + ">\n");
         } else {
-            if (StringUtils.isBlank(value)) {
+            if (org.apache.commons.lang.StringUtils.isBlank(value)) {
                 xmlStr.append("</" + name + ">\n");
             } else {
                 if (isjson(value)) {

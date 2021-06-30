@@ -244,26 +244,4 @@ public class StringUtils {
     public static void notNull(Object object) {
         notNull(object, "[Assertion failed] - this argument is required; it must not be null");
     }
-    
-    public static boolean isNotEmpty(String in){
-        return in != null && !"".equals(in.trim());
-    }
-    
-    public static boolean isNotBlank(String str) {
-        return !StringUtils.isBlank(str);
-    }
-    
-    public static boolean isBlank(String str) {
-        int strLen;
-        if (str == null || (strLen = str.length()) == 0) {
-            return true;
-        }
-        for (int i = 0; i < strLen; i++) {
-            if ((Character.isWhitespace(str.charAt(i)) == false)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
 }

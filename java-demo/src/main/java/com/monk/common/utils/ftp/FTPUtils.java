@@ -4,7 +4,7 @@
  * 版权： Copyright 2017-2022 Monk All Rights Reserved.
  * 描述： Monk学习使用
  */
-package com.monk.common.FTP;
+package com.monk.common.utils.ftp;
 
 import java.io.IOException;
 

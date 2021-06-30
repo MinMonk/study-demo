@@ -6,11 +6,14 @@
  */
 package com.monk.common.utils;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -127,9 +130,11 @@ public class CreateEntity {
             }
             content.append("}");
             String path = dirPath + "\\" + StringUtils.formatClassName(tableName.replace("SOA_", "")) + ".java";
-            FileUtils.createFile(path, content.toString());
+            FileUtils.writeStringToFile(new File(path), content.toString());
 
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
+        } catch (IOException e) {
             logger.error(e.getMessage(), e);
         } finally {
             try {

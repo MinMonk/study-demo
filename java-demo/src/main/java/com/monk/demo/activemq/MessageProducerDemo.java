@@ -4,7 +4,7 @@
  * 版权： Copyright 2017-2022 Monk All Rights Reserved.
  * 描述： Monk学习使用
  */
-package com.monk.common.activemq;
+package com.monk.demo.activemq;
 
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
@@ -16,12 +16,12 @@ import javax.jms.TextMessage;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 /**
- *
+ * 消息生产者
  * @author Monk
  * @version V1.0
  * @date 2019年7月16日 上午9:32:46
  */
-public class TestConnection {
+public class MessageProducerDemo {
     public static void main(String[] args) {
         try {
             testMQProducerQueue();

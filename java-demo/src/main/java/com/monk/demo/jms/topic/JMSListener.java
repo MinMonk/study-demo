@@ -4,7 +4,7 @@
  * 版权： Copyright 2017-2022 Monk All Rights Reserved.
  * 描述： Monk学习使用
  */
-package com.monk.common.JMS.topic;
+package com.monk.demo.jms.topic;
 
 import javax.jms.JMSException;
 import javax.jms.Message;

@@ -4,7 +4,7 @@
  * 版权： Copyright 2017-2022 Monk All Rights Reserved.
  * 描述： Monk学习使用
  */
-package com.monk.common.JMS.topic;
+package com.monk.demo.jms.queue;
 
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
@@ -50,7 +50,10 @@ public class JMSProduce {
     private static Logger logger = LoggerFactory.getLogger(JMSProduce.class);
     
     public static void main(String[] args) {
-        connFactory = new ActiveMQConnectionFactory(JMSProduce.USERNAME, JMSProduce.PASSWORD, JMSProduce.BROKERURL);
+        //connFactory = new ActiveMQConnectionFactory(JMSProduce.USERNAME, JMSProduce.PASSWORD, JMSProduce.BROKERURL);
+        String url = "tcp://localhost:61616";
+        url = "failover:(tcp://10.204.105.137:61666,tcp://10.204.105.138:61666)?initialReconnectDelay=3000&timeout=3000&startupMaxReconnectAttempts=1&randomize=false";
+        connFactory = new ActiveMQConnectionFactory("admin", "admin", url);
         try {
             //1. 创建连接工厂
             conn = connFactory.createConnection();
@@ -62,7 +65,7 @@ public class JMSProduce {
             session = conn.createSession(Boolean.TRUE, Session.AUTO_ACKNOWLEDGE);
             
             //4. 创建消息队列
-            destination = session.createTopic("FirstQueue");
+            destination = session.createQueue("FirstQueue");
             
             //5.创建消息生产者
             messageProducer = session.createProducer(destination);

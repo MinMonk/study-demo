@@ -1,4 +1,4 @@
-package com.monk.activemq;
+package com.monk.demo.activemq;
 
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
@@ -11,7 +11,7 @@ import javax.jms.TextMessage;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 
-public class TestConnect {
+public class MessageConsumerDemo {
     
     public static void main(String[] args) throws Exception {
         testQueueCustomer();

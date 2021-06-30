@@ -4,8 +4,8 @@ import com.monk.common.jaxb.bean.DataObject;
 import com.monk.common.jaxb.bean.Field;
 import com.monk.common.jaxb.bean.Key;
 import com.monk.common.jaxb.bean.Table;
-import com.monk.common.utils.StringUtils;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.StringUtils;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
