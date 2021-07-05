@@ -38,8 +38,8 @@ import lombok.extern.slf4j.Slf4j;
  * @date 2021年6月30日 下午3:27:42
  */
 @Slf4j
-@SpringBootTest
-@RunWith(SpringRunner.class)
+// @SpringBootTest
+// @RunWith(SpringRunner.class)
 @TestInstance(Lifecycle.PER_CLASS)
 public class JacksonTest {
     
