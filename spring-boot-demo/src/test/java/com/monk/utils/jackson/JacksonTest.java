@@ -27,6 +27,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.monk.bean.Person;
 import com.monk.common.utils.JacksonUtil;
+import com.monk.common.utils.JacksonUtils;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -85,6 +86,22 @@ public class JacksonTest {
         Person person = new Person(1L, null, 18, new Date());
         String str = objMappper.writeValueAsString(person);
         log.info("writeNullAsEmpty-->{}", str);
+    }
+    
+    @Test
+    public void writeNullAsEmptyTest() {
+        JacksonUtils util = new JacksonUtils(false);
+        Person person = new Person(1L, null, 18, new Date());
+        String str = util.writeValueAsString(person);
+        log.info("write null as empty --> {}", str);
+    }
+    
+    @Test
+    public void writeNullTest() {
+        JacksonUtils util = new JacksonUtils();
+        Person person = new Person(1L, null, 18, new Date());
+        String str = util.writeValueAsString(person);
+        log.info("write null --> {}", str);
     }
 
 }
