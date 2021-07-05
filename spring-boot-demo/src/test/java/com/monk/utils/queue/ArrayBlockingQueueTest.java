@@ -1,16 +1,15 @@
 package com.monk.utils.queue;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.Test;
 
 import java.util.Iterator;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.junit.Test;
-
-import lombok.extern.slf4j.Slf4j;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @Slf4j
 class Producer implements Runnable{
@@ -255,6 +254,7 @@ public class ArrayBlockingQueueTest {
         queue.add("msg_1");
         queue.add("msg_2");
         queue.add("msg_3");
+        log.info("123");:
         
         Iterator<String> iterator = queue.iterator();
         while(iterator.hasNext()) {
