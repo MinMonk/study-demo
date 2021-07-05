@@ -254,8 +254,7 @@ public class ArrayBlockingQueueTest {
         queue.add("msg_1");
         queue.add("msg_2");
         queue.add("msg_3");
-        log.info("222");
-        
+
         Iterator<String> iterator = queue.iterator();
         while(iterator.hasNext()) {
             log.info("iterator msg:{}", iterator.next());
