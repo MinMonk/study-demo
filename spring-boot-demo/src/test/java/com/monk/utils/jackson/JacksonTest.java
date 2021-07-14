@@ -1,9 +1,3 @@
-/**
- * 
- * 文件名：JacksonTest.java
- * 版权： Copyright 2017-2022 CMCC All Rights Reserved.
- * 描述： ESB管理系统
- */
 package com.monk.utils.jackson;
 
 import java.io.IOException;

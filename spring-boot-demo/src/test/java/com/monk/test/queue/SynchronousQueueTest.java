@@ -1,12 +1,5 @@
-/**
- * 
- * 文件名：SynchronousQueueTest.java
- * 版权： Copyright 2017-2022 CMCC All Rights Reserved.
- * 描述： ESB管理系统
- */
 package com.monk.test.queue;
 
-import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -16,12 +9,6 @@ import org.junit.Test;
 
 import lombok.extern.slf4j.Slf4j;
 
-/**
- *
- * @author Monk
- * @version V1.0
- * @date 2021年7月7日 下午3:37:13
- */
 @Slf4j
 public class SynchronousQueueTest {
 
@@ -128,7 +115,7 @@ public class SynchronousQueueTest {
     }
     
     /**
-     * offer方法不会阻塞队列，但是
+     * offer方法不会阻塞队列，但是永远返回的是false
      * 
      * @author Monk
      * @date 2021年7月7日 下午4:23:04

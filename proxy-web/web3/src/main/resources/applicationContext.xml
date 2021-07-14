@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+    <bean name="customProxy" class="com.servlet.ProxyController">
+        <property name="pathToStrip" value="/proxy/*"/>
+        <property name="servletClass" value="org.mitre.dsmiley.httpproxy.ProxyServlet"/>
+        <property name="servletName" value="customProxy"/>
+        <property name="initParameters">
+            <props>
+                <prop key="targetUri">http://localhost:8082/web2/</prop>
+                <prop key="log">true</prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>

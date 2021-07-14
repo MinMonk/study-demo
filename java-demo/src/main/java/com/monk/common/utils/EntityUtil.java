@@ -1,9 +1,3 @@
-/**
- * 
- * 文件名：EntityUtil.java
- * 版权： Copyright 2017-2022 CMCC All Rights Reserved.
- * 描述： ESB管理系统
- */
 package com.monk.common.utils;
 
 import java.lang.reflect.Field;
@@ -53,7 +47,6 @@ public class EntityUtil {
      * @param clazz
      *            实体类
      * @return 实体对象
-     * @author huangyulan
      * @date 2021年3月16日 上午11:03:34
      */
     public static <T> Object convertEntityByMap(Map<String, Object> data, Class<T> clazz) {

@@ -26,8 +26,8 @@ public class XmlUtils {
     public static void main(String[] args) {
         String xmlStr = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n" + "\r\n"
                 + "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n"
-                + "  <soapenv:Header xmlns:msg=\"http://soa.haid.com/MsgHeader\" xmlns:osb=\"http://soa.haid.com/OSB_CREDIT_CREDIT_HQ_InquirySyncOrgSrv\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"></soapenv:Header>\r\n"
-                + "  <soapenv:Body xmlns:msg=\"http://soa.haid.com/MsgHeader\" xmlns:osb=\"http://soa.haid.com/OSB_CREDIT_CREDIT_HQ_InquirySyncOrgSrv\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">  \r\n"
+                + "  <soapenv:Header xmlns:msg=\"http://soa.monk.com/MsgHeader\" xmlns:osb=\"http://soa.monk.com/OSB_CREDIT_CREDIT_HQ_InquirySyncOrgSrv\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"></soapenv:Header>\r\n"
+                + "  <soapenv:Body xmlns:msg=\"http://soa.monk.com/MsgHeader\" xmlns:osb=\"http://soa.monk.com/OSB_CREDIT_CREDIT_HQ_InquirySyncOrgSrv\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">  \r\n"
                 + "    <osb:InputParameters> \r\n" + "      <osb:MSGHEADER> \r\n"
                 + "        <msg:SOURCESYSTEMID>1</msg:SOURCESYSTEMID>  \r\n"
                 + "        <msg:SOURCESYSTEMNAME>1</msg:SOURCESYSTEMNAME>  \r\n"

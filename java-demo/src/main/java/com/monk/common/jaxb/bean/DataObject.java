@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "DATA_OBJECT", namespace = "http://soa.haid.com/CommonDAS")
+@XmlRootElement(name = "DATA_OBJECT", namespace = "http://soa.monk.com/CommonDAS")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DataObject {
     @XmlElement(name="DATA_OBJECT_NAME", required = true, nillable = false)

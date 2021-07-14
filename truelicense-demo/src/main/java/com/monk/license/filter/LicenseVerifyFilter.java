@@ -46,14 +46,14 @@ public class LicenseVerifyFilter implements Filter {
         if (LicenseStatu.LOCK.equals(info.getStatu())) {
             response.setContentType("application/json;charset=UTF-8");
             PrintWriter pw = response.getWriter();
-            pw.print("{\"status\":\"SOA-400\",\"msg\":\"非法篡改系统时间，系统已锁定，请联系远行科技相关负责人。\"}");
+            pw.print("{\"status\":\"SOA-400\",\"msg\":\"非法篡改系统时间，系统已锁定，请联系相关负责人。\"}");
             pw.flush();
             pw.close();
             return;
         } else if (LicenseStatu.INVALID.equals(info.getStatu())) {
             response.setContentType("application/json;charset=UTF-8");
             PrintWriter pw = response.getWriter();
-            pw.print("{\"status\":\"SOA-401\",\"msg\":\"证书过期，请联系远行科技相关负责人重新申请证书！\"}");
+            pw.print("{\"status\":\"SOA-401\",\"msg\":\"证书过期，请联系相关负责人重新申请证书！\"}");
             pw.flush();
             pw.close();
             return;
@@ -65,7 +65,7 @@ public class LicenseVerifyFilter implements Filter {
                 
                 response.setContentType("application/json;charset=UTF-8");
                 PrintWriter pw = response.getWriter();
-                pw.print("{\"status\":\"SOA-401\",\"msg\":\"证书过期，请联系远行科技相关负责人重新申请证书！\"}");
+                pw.print("{\"status\":\"SOA-401\",\"msg\":\"证书过期，请联系相关负责人重新申请证书！\"}");
                 pw.flush();
                 pw.close();
                 return;

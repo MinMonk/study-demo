@@ -1,9 +1,3 @@
-/**
- * 
- * 文件名：DemoConfig.java
- * 版权： Copyright 2017-2022 CMCC All Rights Reserved.
- * 描述： ESB管理系统
- */
 package com.monk.config;
 
 import org.springframework.context.annotation.Bean;

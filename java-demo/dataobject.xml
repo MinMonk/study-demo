@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:DATA_OBJECT xmlns:ns2="http://soa.haid.com/CommonDAS">
+<ns2:DATA_OBJECT xmlns:ns2="http://soa.monk.com/CommonDAS">
     <DATA_OBJECT_NAME>QUERY_USER_INFO</DATA_OBJECT_NAME>
     <DATA_SOURCE_NAME>TEST_DATA_SOURCE</DATA_SOURCE_NAME>
     <OPERATION_TYPE>SELECT</OPERATION_TYPE>

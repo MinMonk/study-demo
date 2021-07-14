@@ -1,7 +1,7 @@
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
 	<soapenv:Header/>
 	<soap:Body xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-		<ns2:InputParameters xmlns="http://soa.cmcc.com/MsgHeader" xmlns:ns2="http://soa.cmcc.com/OSB_BP_SOA_HQ_ImportBdgtReleaseRouteSrv">
+		<ns2:InputParameters xmlns="http://soa.monk.com/MsgHeader" xmlns:ns2="http://soa.monk.com/OSB_BP_SOA_HQ_ImportBdgtReleaseRouteSrv">
 			<ns2:MSGHEADER>
 				<SOURCESYSTEMID>CMSR-SCM</SOURCESYSTEMID>
 				<SOURCESYSTEMNAME>供应链系统</SOURCESYSTEMNAME>

@@ -1,9 +1,3 @@
-/**
- * 
- * 文件名：JsonUtil.java
- * 版权： Copyright 2017-2022 CMCC All Rights Reserved.
- * 描述： ESB管理系统
- */
 package com.monk.common.utils;
 
 import java.io.IOException;
@@ -23,8 +17,7 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 /**
  * 格式化Json工具类
  * <p>
- * 不同于com.vispractice.soa.common.util.JSON的是使用的ObjectMapper不一样，
- * 所以当前JsonUtil类支持一些com.fasterxml.jackson.annotation下的注解 <br/>
+ * 当前JsonUtil类支持一些com.fasterxml.jackson.annotation下的注解 <br/>
  * 比如 : @JsonFormat @JsonIgnore @JsonProperty 等等...
  * </p>
  * 

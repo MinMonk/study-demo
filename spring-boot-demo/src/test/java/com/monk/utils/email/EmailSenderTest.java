@@ -1,9 +1,3 @@
-/**
- * 
- * 文件名：EmailSenderTest.java
- * 版权： Copyright 2017-2022 CMCC All Rights Reserved.
- * 描述： ESB管理系统
- */
 package com.monk.utils.email;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -37,7 +31,7 @@ public class EmailSenderTest {
         IMultipartEmailSender emailSender = EmailSenderFactory.getEmailSender(MessageType.FLOW_MESSAGE);
         String currDateStr = DateFormatUtils.format(new Date(), DateFormatUtils.ISO_DATETIME_FORMAT.getPattern());
         Map<String, String> result = emailSender.sendEmail("测试邮件",
-                "hello monk, 这是在打包构建的时候发送的一封测试邮件。当前时间: " + currDateStr, "wangliang@vispractice.com", null, null);
+                "hello monk, 这是在打包构建的时候发送的一封测试邮件。当前时间: " + currDateStr, "monk@163.com", null, null);
         String flag = result.get(IMultipartEmailSender.SEND_FLAG);
         String msg = result.get(IMultipartEmailSender.SEND_MSG);
         log.info("send email test result. flag=[{}], msg=[{}]", flag, msg);
