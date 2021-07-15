@@ -1,10 +1,14 @@
 server:
-   port: 8083
+   port: 8084
    servlet:
-      context-path: /web3
+      context-path: /web4
       
 spring:
    thymeleaf:
       prefix: classpath:/static/
       suffix: .html
       cache: false #关闭缓存'
+      
+proxy:
+   mft:
+      targetUri: http://localhost:8082/web2
