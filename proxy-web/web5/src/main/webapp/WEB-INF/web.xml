@@ -28,23 +28,16 @@
 		<servlet-name>servlet</servlet-name>
 	</filter-mapping>
 	
-	<servlet>
-		<servlet-name>proxy</servlet-name>
-		<servlet-class>org.mitre.dsmiley.httpproxy.ProxyServlet</servlet-class>
-		<init-param>
-			<param-name>targetUri</param-name>
-			<param-value>http://localhost:8082/web2</param-value>
-		</init-param>
-		<init-param>
-			<param-name>log</param-name>
-			<param-value>true</param-value>
-		</init-param>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>proxy</servlet-name>
+	
+	<filter>  
+        <filter-name>proxyFilter</filter-name>  
+        <filter-class>com.monk.filter.HttpServletRequestProxyFilter</filter-class>  
+    </filter>  
+	<filter-mapping>
+		<filter-name>proxyFilter</filter-name>
 		<url-pattern>/proxy/*</url-pattern>
-	</servlet-mapping>
-
+	</filter-mapping>
+	
 	<session-config>
 		<session-timeout>30</session-timeout>
 	</session-config>

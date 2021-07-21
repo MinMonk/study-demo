@@ -1,11 +1,11 @@
 package com.monk.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -18,22 +18,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class IndexController {
     
     @GetMapping("/index.do")
-    public String index() {
-        return "index";
+    public ModelAndView index(Model model) {
+        ModelAndView mv =new ModelAndView();
+        mv.addObject("message", "monk");
+        mv.setViewName("index");
+        return mv;
     }
     
     @GetMapping("/hello")
     @ResponseBody
-    public String hello(@RequestParam("name") String name) {
-        System.out.println("name:" + name);
+    public String hello(String name) {
         return "hello " + name;
-    }
-    
-    @PostMapping("/postReq")
-    @ResponseBody
-    public String post(@RequestParam("name") String name) {
-        System.out.println("name:" + name);
-        return name;
     }
 
 }

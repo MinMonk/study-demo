@@ -27,6 +27,8 @@
 		<module>web1</module>
 		<module>web2</module>
 		<module>web3</module>
+		<module>web4</module>
+		<module>web5</module>
 	</modules>
 
 	<build>
