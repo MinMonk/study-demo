@@ -88,7 +88,8 @@
 			<version>1.5.4</version>
 		</dependency>
 		<!-- javax.mail发送邮件jar包   end  -->
-		
+
+		<!--json格式化依赖jar包   start-->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
@@ -97,8 +98,17 @@
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
 		</dependency>
-		
-		
+		<!--json格式化依赖jar包   end-->
+
+		<!--redis.jar包   start-->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>3.6.3</version>
+		</dependency>
+		<!--redis.jar包   end-->
+
+
 	</dependencies>
 
 	<build>
