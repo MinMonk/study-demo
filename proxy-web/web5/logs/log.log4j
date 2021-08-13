@@ -1,0 +1,4 @@
+[08-13 18:38:03] [INFO] [main] [org.springframework.context.support.ClassPathXmlApplicationContext:583] Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1eb44e46: startup date [Fri Aug 13 18:38:03 CST 2021]; root of context hierarchy
+[08-13 18:38:03] [INFO] [main] [org.springframework.beans.factory.xml.XmlBeanDefinitionReader:317] Loading XML bean definitions from class path resource [META-INF/spring/applicationContext.xml]
+[08-13 18:38:03] [INFO] [main] [org.springframework.context.support.ClassPathXmlApplicationContext:583] Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1eb44e46: startup date [Fri Aug 13 18:38:03 CST 2021]; root of context hierarchy
+[08-13 18:38:03] [INFO] [main] [org.springframework.beans.factory.xml.XmlBeanDefinitionReader:317] Loading XML bean definitions from class path resource [META-INF/spring/applicationContext.xml]

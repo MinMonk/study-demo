@@ -2,7 +2,7 @@
 <configuration debug="false" scan="true" scanPeriod="1 seconds">
 
     <contextName>web5</contextName>
-    <property name="log.path" value="logs/web5.log"/>
+    <property name="log.path" value="C:/develop/tomcat/apache-tomcat-8.5.35_testlogs/web5.log"/>
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n</pattern>

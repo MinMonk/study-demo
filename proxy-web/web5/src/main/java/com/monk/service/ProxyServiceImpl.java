@@ -1,4 +1,4 @@
-package com.monk.controller;
+package com.monk.service;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -10,6 +10,7 @@ import java.util.BitSet;
 import java.util.Enumeration;
 import java.util.Formatter;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -22,14 +23,9 @@ import org.apache.http.HttpHeaders;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.config.CookieSpecs;
-import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.AbortableHttpRequest;
 import org.apache.http.client.utils.URIUtils;
-import org.apache.http.config.SocketConfig;
 import org.apache.http.entity.InputStreamEntity;
-import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicHeader;
 import org.apache.http.message.BasicHttpEntityEnclosingRequest;
 import org.apache.http.message.BasicHttpRequest;
@@ -37,73 +33,64 @@ import org.apache.http.message.HeaderGroup;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-/**
- * 反向代理服务类
- * 
- * @author Monk
- * @version V1.0
- * @date 2021年7月15日 上午11:08:51
- */
-@SuppressWarnings("deprecation")
-public class ProxyService {
+import com.monk.properties.HttpClientProperties;
+import com.monk.properties.ProxyProperties;
+import com.monk.util.HttpClientFactory;
+import com.monk.util.ProxyUtils;
 
-    private static final Logger logger = LoggerFactory.getLogger(ProxyService.class);
+@Service
+public class ProxyServiceImpl implements ProxyService {
+
+    private static final Logger logger = LoggerFactory.getLogger(ProxyUtils.class);
 
     private URI targetUriObj;
     private HttpHost targetHost;
-    private HttpClient proxyClient;
     private static final HeaderGroup hopByHopHeaders = new HeaderGroup();
 
-    private int connectTimeout = -1;
-    private int readTimeout = -1;
-    private int connectionRequestTimeout = -1;
-    private int maxConnections = -1;
     private String proxyType;
     private String targetUri;
 
     private boolean doLog = true;
     private boolean doForwardIP = true;
-    private boolean useSystemProperties = true;
     private boolean doSendUrlFragment = true;
     private boolean doHandleCompression = false;
     private boolean doPreserveHost = false;
     private boolean doPreserveCookies = false;
-    private boolean doHandleRedirects = false;
     private static final String ATTR_TARGET_URI = "targetUri";
     private static final String ATTR_TARGET_HOST = "targetHost";
 
-    /**
-     * 私有化构造方法
-     * 
-     * @param targetUri
-     *            目标端地址
-     * @param proxyType
-     *            代理类型
-     * @throws ServletException
-     * @author Monk
-     * @date 2021年7月15日 下午4:52:42
-     */
-    public ProxyService(String targetUri, String proxyType) throws ServletException {
-        this.proxyType = proxyType;
-        this.targetUri = targetUri;
-        initTargetConfig();
-        proxyClient = createHttpClient();
+    @Autowired
+    private ProxyProperties proxyProperties;
+
+    @PostConstruct
+    public void init() {
+        // 初始化代理配置参数
+        this.doLog = proxyProperties.isDoLog();
+        this.doForwardIP = proxyProperties.isDoForwardIP();
+        this.doSendUrlFragment = proxyProperties.isDoSendUrlFragment();
+        this.doHandleCompression = proxyProperties.isDoHandleCompression();
+        this.doPreserveHost = proxyProperties.isDoPreserveHost();
+        this.doPreserveCookies = proxyProperties.isDoPreserveCookies();
+
         initHeader();
     }
 
     /**
-     * 获取代理服务类
+     * 构造方法
      * 
+     * @param targetUri
      * @param proxyType
-     *            代理类型
-     * @return 代理服务类
      * @throws ServletException
      * @author Monk
-     * @date 2021年7月15日 下午4:53:04
+     * @date 2021年8月13日 下午7:23:12
      */
-    public static ProxyService getProxyService(String targetUriValue, String proxyType) throws ServletException {
-        return new ProxyService(targetUriValue, proxyType);
+    ProxyServiceImpl(String targetUri, String proxyType) throws ServletException {
+        this.proxyType = proxyType;
+        this.targetUri = targetUri;
+        initTargetConfig();
     }
 
     /**
@@ -139,72 +126,7 @@ public class ProxyService {
         targetHost = URIUtils.extractHost(targetUriObj);
     }
 
-    /**
-     * 创建HttpClient
-     * 
-     * @return Http客户端
-     * @author Monk
-     * @date 2021年7月15日 下午2:44:27
-     */
-    private HttpClient createHttpClient() {
-        HttpClientBuilder clientBuilder = HttpClientBuilder.create();
-        clientBuilder.setDefaultRequestConfig(buildRequestConfig());
-        clientBuilder.setDefaultSocketConfig(buildSocketConfig());
-        clientBuilder.setMaxConnTotal(maxConnections);
-        clientBuilder.setMaxConnPerRoute(maxConnections);
-        if (!doHandleCompression) {
-            clientBuilder.disableContentCompression();
-        }
-
-        if (useSystemProperties) {
-            clientBuilder = clientBuilder.useSystemProperties();
-        }
-
-        return clientBuilder.build();
-    }
-
-    /**
-     * 构建RequestConfig
-     * 
-     * @return 请求配置
-     * @author Monk
-     * @date 2021年7月15日 下午2:45:07
-     */
-    private RequestConfig buildRequestConfig() {
-        return RequestConfig.custom().setRedirectsEnabled(doHandleRedirects)
-                .setCookieSpec(CookieSpecs.IGNORE_COOKIES).setConnectTimeout(connectTimeout)
-                .setSocketTimeout(readTimeout).setConnectionRequestTimeout(connectionRequestTimeout).build();
-    }
-
-    /**
-     * 构建Socket连接配置
-     * 
-     * @return Socket连接配置
-     * @author Monk
-     * @date 2021年7月15日 下午2:45:31
-     */
-    private SocketConfig buildSocketConfig() {
-        if (readTimeout < 1) {
-            return null;
-        }
-
-        return SocketConfig.custom().setSoTimeout(readTimeout).build();
-    }
-
-    /**
-     * 代理
-     * 
-     * @param servletRequest
-     *            servlet请求对象
-     * @param servletResponse
-     *            servlet响应对象
-     * @throws IOException
-     *             IO异常
-     * @throws ServletException
-     *             Servlet异常
-     * @author Monk
-     * @date 2021年7月15日 下午2:48:32
-     */
+    @Override
     public void proxy(HttpServletRequest servletRequest, HttpServletResponse servletResponse)
             throws IOException, ServletException {
         if (servletRequest.getAttribute(ATTR_TARGET_URI) == null) {
@@ -254,6 +176,55 @@ public class ProxyService {
     }
 
     /**
+     * 复制响应对象体
+     * 
+     * @param proxyResponse
+     *            代理响应对象
+     * @param servletResponse
+     *            源响应对象
+     * @param proxyRequest
+     *            代理请求
+     * @param servletRequest
+     *            源请求
+     * @throws IOException
+     *             IO异常
+     * @author Monk
+     * @date 2021年7月15日 下午3:06:04
+     */
+    private void copyResponseEntity(HttpResponse proxyResponse, HttpServletResponse servletResponse,
+            HttpRequest proxyRequest, HttpServletRequest servletRequest) throws IOException {
+        HttpEntity entity = proxyResponse.getEntity();
+        if (entity != null) {
+            if (entity.isChunked()) {
+                InputStream input = null;
+                OutputStream out = null;
+                try {
+                    input = entity.getContent();
+                    out = servletResponse.getOutputStream();
+                    byte[] buffer = new byte[10 * 1024];
+                    int read;
+                    while ((read = input.read(buffer)) != -1) {
+                        out.write(buffer, 0, read);
+                        if (doHandleCompression || input.available() == 0) {
+                            out.flush();
+                        }
+                    }
+                } finally {
+                    if (null != out) {
+                        out.close();
+                    }
+                    if (null != input) {
+                        input.close();
+                    }
+                }
+            } else {
+                OutputStream servletOutputStream = servletResponse.getOutputStream();
+                entity.writeTo(servletOutputStream);
+            }
+        }
+    }
+
+    /**
      * 使用HttpClient执行代理请求
      * 
      * @param servletRequest
@@ -271,7 +242,35 @@ public class ProxyService {
             logger.info("proxy {} uri:{} --> {}", new Object[] { servletRequest.getMethod(),
                     servletRequest.getRequestURI(), proxyRequest.getRequestLine().getUri() });
         }
-        return proxyClient.execute(getTargetHost(servletRequest), proxyRequest);
+        return HttpClientFactory.getHttpClient().execute(getTargetHost(servletRequest), proxyRequest);
+    }
+
+    /**
+     * 获取代理地址的Host信息
+     * 
+     * @param servletRequest
+     *            请求对象
+     * @return 代理地址的Host信息
+     * @author Monk
+     * @date 2021年7月21日 上午10:22:19
+     */
+    private HttpHost getTargetHost(HttpServletRequest servletRequest) {
+        return (HttpHost) servletRequest.getAttribute(ATTR_TARGET_HOST);
+    }
+
+    /**
+     * 重写请求对象中的queryString参数(请求地址中"?"后跟的参数)
+     * 
+     * @param servletRequest
+     *            请求对象
+     * @param queryString
+     *            查询参数
+     * @return 代理地址
+     * @author Monk
+     * @date 2021年7月21日 上午10:22:19
+     */
+    private String rewriteQueryStringFromRequest(HttpServletRequest servletRequest, String queryString) {
+        return queryString;
     }
 
     /**
@@ -360,6 +359,34 @@ public class ProxyService {
     }
 
     /**
+     * 重写响应头中的location地址
+     * 
+     * @param servletRequest
+     *            源请求
+     * @param theUrl
+     *            响应中的localtion地址
+     * @return 重写后的location地址
+     * @author Monk
+     * @date 2021年7月15日 下午3:45:23
+     */
+    private String rewriteUrlFromResponse(HttpServletRequest servletRequest, String theUrl) {
+        final String targetUri = getTargetUri(servletRequest);
+        if (theUrl.startsWith(targetUri)) {
+            StringBuffer curUrl = servletRequest.getRequestURL();
+            int pos;
+            if ((pos = curUrl.indexOf("://")) >= 0) {
+                if ((pos = curUrl.indexOf("/", pos + 3)) >= 0) {
+                    curUrl.setLength(pos);
+                }
+            }
+            curUrl.append(servletRequest.getContextPath());
+            curUrl.append(servletRequest.getServletPath());
+            return curUrl.toString();
+        }
+        return theUrl;
+    }
+
+    /**
      * 复制代理的Cookie
      * 
      * @param servletRequest
@@ -431,44 +458,6 @@ public class ProxyService {
             path = "/";
         }
         return path;
-    }
-
-    /**
-     * 复制响应对象体
-     * 
-     * @param proxyResponse
-     *            代理响应对象
-     * @param servletResponse
-     *            源响应对象
-     * @param proxyRequest
-     *            代理请求
-     * @param servletRequest
-     *            源请求
-     * @throws IOException
-     *             IO异常
-     * @author Monk
-     * @date 2021年7月15日 下午3:06:04
-     */
-    private void copyResponseEntity(HttpResponse proxyResponse, HttpServletResponse servletResponse,
-            HttpRequest proxyRequest, HttpServletRequest servletRequest) throws IOException {
-        HttpEntity entity = proxyResponse.getEntity();
-        if (entity != null) {
-            if (entity.isChunked()) {
-                InputStream is = entity.getContent();
-                OutputStream os = servletResponse.getOutputStream();
-                byte[] buffer = new byte[10 * 1024];
-                int read;
-                while ((read = is.read(buffer)) != -1) {
-                    os.write(buffer, 0, read);
-                    if (doHandleCompression || is.available() == 0) {
-                        os.flush();
-                    }
-                }
-            } else {
-                OutputStream servletOutputStream = servletResponse.getOutputStream();
-                entity.writeTo(servletOutputStream);
-            }
-        }
     }
 
     /**
@@ -748,47 +737,6 @@ public class ProxyService {
     }
 
     /**
-     * 获取代理地址
-     * 
-     * @param servletRequest
-     *            请求对象
-     * @return 代理地址
-     * @author Monk
-     * @date 2021年7月21日 上午10:22:19
-     */
-    private String getTargetUri(HttpServletRequest servletRequest) {
-        return (String) servletRequest.getAttribute(ATTR_TARGET_URI);
-    }
-
-    /**
-     * 获取代理地址的Host信息
-     * 
-     * @param servletRequest
-     *            请求对象
-     * @return 代理地址的Host信息
-     * @author Monk
-     * @date 2021年7月21日 上午10:22:19
-     */
-    private HttpHost getTargetHost(HttpServletRequest servletRequest) {
-        return (HttpHost) servletRequest.getAttribute(ATTR_TARGET_HOST);
-    }
-
-    /**
-     * 重写请求对象中的queryString参数(请求地址中"?"后跟的参数)
-     * 
-     * @param servletRequest
-     *            请求对象
-     * @param queryString
-     *            查询参数
-     * @return 代理地址
-     * @author Monk
-     * @date 2021年7月21日 上午10:22:19
-     */
-    private String rewriteQueryStringFromRequest(HttpServletRequest servletRequest, String queryString) {
-        return queryString;
-    }
-
-    /**
      * 重写请求对象中的pathInfo
      * 
      * @param servletRequest
@@ -802,30 +750,16 @@ public class ProxyService {
     }
 
     /**
-     * 重写响应头中的location地址
+     * 获取代理地址
      * 
      * @param servletRequest
-     *            源请求
-     * @param theUrl
-     *            响应中的localtion地址
-     * @return 重写后的location地址
+     *            请求对象
+     * @return 代理地址
      * @author Monk
-     * @date 2021年7月15日 下午3:45:23
+     * @date 2021年7月21日 上午10:22:19
      */
-    private String rewriteUrlFromResponse(HttpServletRequest servletRequest, String theUrl) {
-        final String targetUri = getTargetUri(servletRequest);
-        if (theUrl.startsWith(targetUri)) {
-            StringBuffer curUrl = servletRequest.getRequestURL();
-            int pos;
-            if ((pos = curUrl.indexOf("://")) >= 0) {
-                if ((pos = curUrl.indexOf("/", pos + 3)) >= 0) {
-                    curUrl.setLength(pos);
-                }
-            }
-            curUrl.append(servletRequest.getContextPath());
-            curUrl.append(servletRequest.getServletPath());
-            return curUrl.toString();
-        }
-        return theUrl;
+    private String getTargetUri(HttpServletRequest servletRequest) {
+        return (String) servletRequest.getAttribute(ATTR_TARGET_URI);
     }
+
 }
