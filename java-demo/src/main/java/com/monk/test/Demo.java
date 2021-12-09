@@ -32,6 +32,9 @@ public class Demo {
         stringBuilder.append("'");
         for(int i = 0; i < numLength; i++) {
             char c = numStr.charAt(i);
+            if(i > 0 && String.valueOf(c).equals("0")){
+                continue;
+            }
             String str = String.format("%-" + (numLength - i) + "s", c).replace(' ', '0');
             stringBuilder.append(str);
             if(i < numLength-1) {
