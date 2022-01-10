@@ -137,8 +137,6 @@
 		</dependency>
 		<!--zookeeper.jar包   end-->
 
-
-
 	</dependencies>
 
 	<build>
